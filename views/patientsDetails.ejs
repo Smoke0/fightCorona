@@ -1,0 +1,30 @@
+<html><body>
+    <table border="1" cellpadding="7" cellspacing="7">
+      <tr>
+        <th width="50px">No</th>
+        <th>Full Name</th>
+        <th>Father Name</th>
+        <th>Address</th>
+        <th>Locality</th>
+        <th>City</th>
+        <th>State</th>
+      </tr>
+      <% if(data.length){ 
+        for(var i = 0;i < data.length;i++) { %>
+      <tr>
+        <td><%=(i+1)%></td>
+        <td><%=data[i].fullname%></td>
+        <td><%=data[i].fathername%></td>
+        <td><%=data[i].address%></td>
+        <td><%=data[i].locality%></td>
+        <td><%=data[i].city%></td>
+        <td><%=data[i].state%></td>
+      </tr>
+      <% }
+      }else{ %>
+      <tr>
+        <td colspan="3">No user</td>
+      </tr>
+    <% } %>
+    </table>
+    </body></html>
