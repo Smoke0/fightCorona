@@ -5,10 +5,10 @@ const app = express()
 const port = 3000
 
 const connection = mysql.createConnection({
-	host:'localhost',
-	user:'root',
-	password:'paytm@197',
-	database:'corona'
+	host:'sql12.freemysqlhosting.net',
+	user:'sql12329757',
+	password:'3Q9YrimxTB',
+	database:'sql12329757'
 })
 
 connection.connect(function(err){
@@ -18,12 +18,11 @@ connection.connect(function(err){
 app.use(express.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
+
 app.get('/',function(req,res){
-	console.log('Get request hitting')
 	res.sendFile(path.join(__dirname + '/website.htm'))
 })
 app.post('/',function(req,res){
-	console.log('Post request hitting')
 	var data = {
 		fullname:req.body.name,
 		fathername : req.body.fname,
@@ -44,11 +43,9 @@ app.post('/',function(req,res){
 	res.redirect('/')
 })
 app.get('/:state',function(req,res){
-	console.log(req.params.state)
 	connection.query("select * from patent_details where state=?",req.params.state,function(err,result){
 	if(err) throw err;
 	console.log(result)
-	// res.send(result)
 	res.render('patientsDetails',{page_title:"Corona Patients Table",data:result});	
 	})
 	
