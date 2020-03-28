@@ -5,10 +5,10 @@ const app = express()
 const port = 3000
 
 const connection = mysql.createConnection({
-	host:'localhost',
-	user:'root',
-	password:'paytm@197',
-	database:'corona'
+	host:'sql12.freemysqlhosting.net',
+	user:'sql12329757',
+	password:'3Q9YrimxTB',
+	database:'sql12329757'
 })
 
 connection.connect(function(err){
