@@ -2,7 +2,6 @@ const express = require('express')
 const mysql = require('mysql')
 const path =  require('path')
 const app = express()
-const port = 3000
 
 const connection = mysql.createConnection({
 	host:'sql12.freemysqlhosting.net',
@@ -33,8 +32,7 @@ app.post('/',function(req,res){
 	};
 	connection.query("insert into patent_details SET ?",data,function(err,result){
 	if(err) throw err;
-	console.log(result)
-	})
+})
 	console.log(req.body.name)
 	console.log(req.body.fname)
 	console.log(req.body.address)
@@ -45,12 +43,9 @@ app.post('/',function(req,res){
 app.get('/:state',function(req,res){
 	connection.query("select * from patent_details where state=?",req.params.state,function(err,result){
 	if(err) throw err;
-	console.log(result)
 	res.render('patientsDetails',{page_title:"Corona Patients Table",data:result});	
 	})
 	
 })
-app.listen(port,function(){
-	console.log('Hello')
-	}
-)
+
+module.exports = app;
